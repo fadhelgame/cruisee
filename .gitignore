@@ -4,3 +4,6 @@ node_modules/
 .env
 .env.local
 .DS_Store
+.claude/
+*.zip
+implementation_plan.md
