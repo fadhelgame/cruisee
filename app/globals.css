@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  --color-background: #03030a;
+  --color-surface: #080817;
+  --color-surface-2: #0c0c1e;
+  --color-border: #181830;
+  --color-border-light: #222248;
+  --color-muted: #2d2d50;
+  --color-subtle: #8888a0;
+  --color-primary: #f0ede6;
+  --color-accent: #c9a96e;
+  --color-accent-dim: #8b7355;
+  --color-accent-glow: rgba(201, 169, 110, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #03030a;
+  color: #f0ede6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #03030a;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #181830; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #2d2d50; }
+
+::selection {
+  background: rgba(201, 169, 110, 0.15);
+  color: #c9a96e;
+}
+
+@utility text-display {
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 8vw, 9rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+
+@utility text-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 6rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+
+@utility text-section {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+}
+
+@utility label-caps {
+  font-size: 0.6875rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: var(--font-sans);
+}
+
+@utility gold-line {
+  width: 40px;
+  height: 1px;
+  background: #c9a96e;
+}
