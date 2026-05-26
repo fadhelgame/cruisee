@@ -24,6 +24,11 @@ const EXPERIENCES = [
   },
 ]
 
+const expImages: Record<string, string> = {
+  cabin: '/images/experience-cabin.jpg',
+  dining: '/images/experience-dining.jpg',
+}
+
 function ExperienceBlock({ exp }: { exp: (typeof EXPERIENCES)[0] }) {
   const ref = useRef<HTMLDivElement>(null)
   const imageRef = useRef<HTMLDivElement>(null)
@@ -43,22 +48,23 @@ function ExperienceBlock({ exp }: { exp: (typeof EXPERIENCES)[0] }) {
         ref={imageRef}
         className={`relative overflow-hidden bg-surface min-h-[50vh] md:min-h-full ${exp.flip ? 'md:col-start-2' : ''}`}
       >
-        {/* Gradient background with parallax */}
+        {/* Actual image with parallax */}
         <motion.div
-          className="absolute"
-          style={{
-            y: imageY,
-            inset: '-10%',
-            width: '120%',
-            height: '120%',
-            background:
-              'linear-gradient(135deg, rgba(45,45,80,0.4) 0%, rgba(3,3,10,0.95) 50%, rgba(12,12,30,0.6) 100%)',
-          }}
-        />
+          className="absolute inset-0"
+          style={{ y: imageY, width: '120%', height: '120%', inset: '-10%' }}
+        >
+          <img
+            src={expImages[exp.id]}
+            alt={`Cruisee ${exp.id} experience`}
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </motion.div>
 
-        {/* Subtle overlay pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
+        {/* Dark overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-transparent" />
+        <div className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
               'radial-gradient(circle at 25% 50%, rgba(201,169,110,0.6) 0%, transparent 60%)',

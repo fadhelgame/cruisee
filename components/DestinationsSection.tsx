@@ -4,13 +4,13 @@ import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 const DESTINATIONS = [
-  { name: 'Amalfi Coast', region: 'Mediterranean', season: 'May — Sep' },
-  { name: 'Svalbard', region: 'Arctic Circle', season: 'Jun — Aug' },
-  { name: 'Bora Bora', region: 'South Pacific', season: 'Year-Round' },
-  { name: 'Galápagos', region: 'Pacific Ecuador', season: 'Dec — May' },
-  { name: 'Norwegian Fjords', region: 'Scandinavia', season: 'May — Oct' },
-  { name: 'Maldives', region: 'Indian Ocean', season: 'Nov — Apr' },
-  { name: 'Antarctica', region: 'Southern Ocean', season: 'Nov — Mar' },
+  { name: 'Amalfi Coast', region: 'Mediterranean', season: 'May — Sep', image: '/images/dest-amalfi.jpg' },
+  { name: 'Svalbard', region: 'Arctic Circle', season: 'Jun — Aug', image: '/images/dest-svalbard.jpg' },
+  { name: 'Bora Bora', region: 'South Pacific', season: 'Year-Round', image: '/images/dest-borabora.jpg' },
+  { name: 'Galápagos', region: 'Pacific Ecuador', season: 'Dec — May', image: '/images/dest-galapagos.jpg' },
+  { name: 'Norwegian Fjords', region: 'Scandinavia', season: 'May — Oct', image: '/images/dest-fjords.jpg' },
+  { name: 'Maldives', region: 'Indian Ocean', season: 'Nov — Apr', image: '/images/dest-maldives.jpg' },
+  { name: 'Antarctica', region: 'Southern Ocean', season: 'Nov — Mar', image: '/images/dest-antarctica.jpg' },
 ]
 
 export default function DestinationsSection() {
@@ -93,6 +93,14 @@ export default function DestinationsSection() {
             transition={{ duration: 0.8, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] as const }}
             whileHover={{ borderColor: 'rgba(201,169,110,0.5)' }}
           >
+            {/* Background image */}
+            <img
+              src={dest.image}
+              alt={`${dest.name} destination`}
+              className="absolute inset-0 w-full h-full object-cover"
+              loading="lazy"
+            />
+
             {/* Gold border glow on hover */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
               <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(201,169,110,0.12)]" />

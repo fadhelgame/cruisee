@@ -33,6 +33,12 @@ const FLEET = [
   },
 ]
 
+const shipImages: Record<string, string> = {
+  'Aether': '/images/fleet-aether.jpg',
+  'Solenne': '/images/fleet-solenne.jpg',
+  'Lumière': '/images/fleet-lumiere.jpg',
+}
+
 const cardGradients = [
   'from-accent/10 via-accent-dim/5 to-background',
   'from-accent-dim/15 via-muted/5 to-background',
@@ -115,30 +121,27 @@ export default function FleetSection() {
                 el.style.boxShadow = 'none'
               }}
             >
-              {/* Decorative gradient image area */}
-              <div
-                className={`relative w-full h-64 bg-gradient-to-br ${cardGradients[i]} overflow-hidden`}
-              >
-                {/* Subtle overlay pattern */}
-                <div className="absolute inset-0 opacity-[0.03]"
-                  style={{
-                    backgroundImage: `radial-gradient(circle at 30% 40%, rgba(201,169,110,0.6) 0%, transparent 60%),
-                                      radial-gradient(circle at 70% 80%, rgba(201,169,110,0.3) 0%, transparent 50%)`,
-                  }}
+              {/* Ship image */}
+              <div className="relative w-full h-64 overflow-hidden">
+                <img
+                  src={shipImages[ship.name] || ''}
+                  alt={`${ship.name} cruise vessel`}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
                 />
-
-                {/* Vignette overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
+                {/* Dark vignette overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-transparent" />
 
                 {/* Length badge */}
-                <span className="absolute bottom-5 left-5 label-caps text-accent/80 bg-background/40 backdrop-blur-sm px-4 py-1.5 border border-accent/10">
+                <span className="absolute bottom-5 left-5 label-caps text-accent/80 bg-background/50 backdrop-blur-sm px-4 py-1.5 border border-accent/20">
                   {ship.length}
                 </span>
 
-                {/* Decorative corner accent */}
+                {/* Gold corner accent */}
                 <div className="absolute top-0 right-0 w-24 h-24">
-                  <div className="absolute top-0 right-0 w-16 h-px bg-accent/30" />
-                  <div className="absolute top-0 right-0 h-16 w-px bg-accent/30" />
+                  <div className="absolute top-0 right-0 w-16 h-px bg-accent/40" />
+                  <div className="absolute top-0 right-0 h-16 w-px bg-accent/40" />
                 </div>
               </div>
 
